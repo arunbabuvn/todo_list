@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="https://kit.fontawesome.com/ae6f98c258.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="todo-container">
+        <header>
+            <div class="heading">
+                <h1>New ToDo Lists</h1>
+            </div>
+            <div class="menu">
+                <a href="">
+                    <div class="user">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </a>
+            </div>
+        </header>
+        <main>
+            <form>
+                <div class="form-group">
+                    <label for="">Title</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>
