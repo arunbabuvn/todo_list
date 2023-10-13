@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>New Task</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <script src="https://kit.fontawesome.com/ae6f98c258.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
             </div>
         </header>
         <main>
-            <form method="POST" action="">
+            <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="title">Title</label>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Update Task</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <script src="https://kit.fontawesome.com/ae6f98c258.js" crossorigin="anonymous"></script>
 </head>
@@ -14,7 +14,7 @@
     <div class="todo-container">
         <header>
             <div class="heading">
-                <h1>New ToDo Lists</h1>
+                <h1>Update ToDo Lists</h1>
             </div>
             <div class="menu">
                 <a href="">
@@ -29,11 +29,11 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title">
+                    <input type="text" id="title" name="title" value={{data.title}}>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10">{{data.description}}</textarea>
                 </div>
                 <div class="buttons">
                     <button class="submit-button" type="submit">Submit</button>

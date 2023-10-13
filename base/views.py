@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import TaskData
+from base.models import TaskData
 
 
 # Create your views here.
@@ -16,29 +16,31 @@ def delete(request, pk):
     return redirect("/")
 
 
-def edit(request, pk):
-    data = TaskData.objects.get(id=pk)
-    return redirect("/")
-
-
 def login_page(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
         print(username, password)
         user = authenticate(request, username=username, password=password)
-        if user is None:
+        if user is not None:
+            login(request, user)
+        else:
             context = {"error": "Invalid username or password."}
             return render(request, "registration/login.html", context)
-
-        login(request, user)
         return redirect("home")
-
     return render(request, "registration/login.html")
 
 
 def register(request):
     return render(request, "registration/register.html")
+
+
+def logout(request):
+    logout(request)
+
+
+def profile(request):
+    return render(request, "profile.html")
 
 
 def new_task(request):
@@ -51,5 +53,12 @@ def new_task(request):
     return render(request, "newTask.html")
 
 
-def edit_task(request):
-    return render(request, "editTask.html")
+def edit_task(request, pk):
+    data = TaskData.objects.get(id=pk)
+    if request.method == "POST":
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        data = TaskData(id=pk, title=title, description=description)
+        data.save()
+        return redirect("/")
+    return render(request, "editTask.html", {"data": data})
